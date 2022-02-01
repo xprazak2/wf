@@ -1,3 +1,3 @@
 export const main = () => {
-  return "a"
+  return "z"
 }
