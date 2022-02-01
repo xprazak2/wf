@@ -1,6 +1,6 @@
 import esbuild from 'esbuild';
 import babel from 'esbuild-plugin-babel';
-// TODO: add a plugin to remove export
+
 esbuild
   .build({
     entryPoints: ['src/entry.js'],
