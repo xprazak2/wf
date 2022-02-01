@@ -1,12 +1,8 @@
 name: Release
 on:
-  workflow_run:
-    workflows:
-      - test
-    branches:
-      - release/*
-    types:
-      - completed
+  push:
+    tags:
+      - '*'
 
 jobs:
   deploy:
@@ -27,11 +23,3 @@ jobs:
       - name: Release
         run: |
           echo "Releasing a new version"
-      # - name: Tag
-      #   run: |
-      #     "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
-      - name: package-version-to-git-tag
-        uses: pkgdeps/git-tag-action@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_repo: ${{ github.repository }}
