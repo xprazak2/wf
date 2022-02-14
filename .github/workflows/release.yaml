@@ -20,6 +20,12 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn build
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Show release version
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
       - name: Release
         run: |
           echo "Releasing a new version"
