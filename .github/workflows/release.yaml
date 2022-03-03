@@ -31,5 +31,4 @@ jobs:
       - name: Release
         env:
           TAG: ${{ github.sha }}
-          RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
         run: "make all"
