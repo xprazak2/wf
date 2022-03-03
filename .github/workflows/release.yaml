@@ -1,7 +1,7 @@
 name: Release
 on:
   push:
-    tags:
+    branches:
       - '*'
 
 jobs:
@@ -27,5 +27,7 @@ jobs:
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
       - name: Release
-        run: |
-          echo "Releasing a new version"
+        env:
+          TAG: ${{ github.sha }}
+          RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
+        run: "make all"
