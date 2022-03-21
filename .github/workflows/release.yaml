@@ -28,6 +28,7 @@ jobs:
         run: |
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
+          echo ${{ github.sha }}
       - name: Release
         env:
           TAG: ${{ github.sha }}
